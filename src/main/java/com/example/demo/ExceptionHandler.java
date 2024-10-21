@@ -33,10 +33,14 @@ public class ExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-//    @org.springframework.web.bind.annotation.ExceptionHandler(InvalidCustomerDataException.class)
-//    public ResponseEntity<ErrorResponse> handleInvalidCustomerDataException(InvalidCustomerDataException ex) {
-//
-//    }
+    @org.springframework.web.bind.annotation.ExceptionHandler(InvalidCustomerDataException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidCustomerDataException(InvalidCustomerDataException ex) {
+        ErrorResponse response = new ErrorResponse();
+        response.setTimestamp(String.valueOf(LocalDateTime.now()));
+        response.setStatus(HttpStatus.BAD_REQUEST.value());
+        response.setMessage("Age is not valid.");
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ValidationResponse> handleValidationException(MethodArgumentNotValidException ex) {
