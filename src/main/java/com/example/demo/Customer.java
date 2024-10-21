@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Generated;
 import lombok.NoArgsConstructor;
+import org.aspectj.lang.annotation.After;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
@@ -19,7 +20,7 @@ import org.hibernate.validator.constraints.Length;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Customer {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long customerId;
     @NotEmpty @Length(min = 2)
     private String firstName;
